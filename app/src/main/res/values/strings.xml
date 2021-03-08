@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My ApplicationTroo</string>
+    <string name="no_internet">Check Your Internet Connection.!!</string>
+    <string name="store_list">StoreList</string>
+    <string name="menu_list">Menu List</string>
+    <string name="category">category</string>
+    <string name="price">Price</string>
+    <string name="name">Name</string>
+</resources>

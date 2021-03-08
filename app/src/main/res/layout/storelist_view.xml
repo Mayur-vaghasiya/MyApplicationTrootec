@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_margin_5"
+    android:layout_marginBottom="@dimen/padding_margin_5"
+    android:background="@color/white"
+    android:elevation="5dp"
+    android:minHeight="@dimen/padding_margin_60"
+    app:cardCornerRadius="@dimen/padding_margin_10">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/actv_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_width_48"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_margin_5"
+        android:layout_gravity="center"
+        android:text="@string/name"
+        android:textColor="@color/popupHeader"
+        android:textSize="@dimen/text_18" />
+
+</androidx.cardview.widget.CardView>
