@@ -25,6 +25,7 @@ import com.example.application.model.CategoryList;
 import com.example.application.model.StoreList;
 import com.example.application.retro.RetrofitInstance;
 import com.example.application.util.NetworkStatus;
+import com.example.application.util.RecyclerSectionItemDecoration;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -43,7 +44,8 @@ public class MainActivity2 extends AppCompatActivity {
     private MenuAdapter menuListAdapter;
     private ApiRequestData service = null;
     private CustomProgressDialog progress = null;
-   private String apiKey="";
+    private String apiKey = "bd_suvlasmarbellapos";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            apiKey= bundle.getString("APIKEY");
+            apiKey = bundle.getString("APIKEY");
         }
 
         activity = MainActivity2.this;
@@ -76,6 +78,23 @@ public class MainActivity2 extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(activity, layoutManager.VERTICAL, false);
         rvMenuItemList.setLayoutManager(layoutManager);
 
+
+    }
+
+    private RecyclerSectionItemDecoration.SectionCallback getSectionCallback(final ArrayList<CategoryList.Datum> categoryList) {
+        return new RecyclerSectionItemDecoration.SectionCallback() {
+            @Override
+            public boolean isSection(int position) {
+                return position == 0
+                        || categoryList.get(position).getCategoria().getNombremenu()
+                        .charAt(0) != categoryList.get(position - 1).getCategoria().getNombremenu().charAt(0);
+            }
+
+            @Override
+            public CharSequence getSectionHeader(int position) {
+                return categoryList.get(position).getCategoria().getNombremenu();
+            }
+        };
     }
 
     @Override
@@ -86,6 +105,7 @@ public class MainActivity2 extends AppCompatActivity {
         finish();
 
     }
+
     private void getStoreList() {
         service = RetrofitInstance.getRetrofitInstance().create(ApiRequestData.class);
 
@@ -100,6 +120,12 @@ public class MainActivity2 extends AppCompatActivity {
 
                 Log.e(TAG, response.toString());
                 categoryList = (ArrayList<CategoryList.Datum>) response.body().getData();
+
+                RecyclerSectionItemDecoration sectionItemDecoration =
+                        new RecyclerSectionItemDecoration(getResources().getDimensionPixelSize(R.dimen.height_width_40),
+                                true,
+                                getSectionCallback(categoryList));
+                rvMenuItemList.addItemDecoration(sectionItemDecoration);
                 setRecyclerViewData();
                 progress.dismiss();
                 Toast.makeText(activity, "Sync Data with Server", Toast.LENGTH_LONG).show();
