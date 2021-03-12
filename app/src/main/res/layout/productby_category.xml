@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/actv_category"
+        android:textColor="@color/custom_progress_default_color"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_width_48"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_margin_5"
+        android:text="@string/category"
+        android:layout_margin="@dimen/padding_margin_5"
+        android:textSize="@dimen/text_18" />
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_margin_5"
+        android:background="@color/white"
+        android:minHeight="@dimen/height_width_60"
+        app:cardCornerRadius="@dimen/padding_margin_10"
+        android:layout_margin="@dimen/padding_margin_5"
+        android:elevation="5dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_name"
+                android:textColor="@color/popupHeader"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_width_48"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_margin_5"
+                android:layout_gravity="center"
+                android:text="@string/name"
+                android:textSize="@dimen/text_18" />
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
